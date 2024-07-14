@@ -1,0 +1,103 @@
+<div>
+    <div>
+        <form [formGroup]="formGroup" >
+            <div class="input-section">
+                <div class="">
+                    <label for="jugX">JUG X: </label>
+                    <input  type="text"
+                            id="jugX"
+                            formControlName="jugX"
+                            required 
+                            type="number" 
+                            min="1" 
+                            step="1"
+                            (keyup)="validateZero(this.formGroup.controls['jugX'].value, 'jugX')" />
+                </div>
+                <div class="">
+                    <label for="jugY">JUG Y: </label>
+                    <input  type="text"
+                            id="jugY"
+                            formControlName="jugY"
+                            required 
+                            type="number" 
+                            min="1" 
+                            step="1"
+                            (keyup)="validateZero(this.formGroup.controls['jugY'].value, 'jugY')" />
+                </div>
+                <div class="">
+                    <label for="jugZ">JUG Z: </label>
+                    <input  type="text"
+                            id="jugZ"
+                            formControlName="jugZ"
+                            required 
+                            type="number" 
+                            min="1" 
+                            step="1"
+                            (keyup)="validateZero(this.formGroup.controls['jugZ'].value, 'jugZ')" />
+                </div>
+                
+            </div>
+        </form>
+        <div class="button-section">
+            <button (click)="minSteps(this.formGroup.controls['jugY'].value, this.formGroup.controls['jugX'].value, this.formGroup.controls['jugZ'].value)">
+                Calculate 
+            </button>
+        </div>
+    </div>
+
+    <div class="jug-animation">
+        <div class="jug-section"  *ngIf="bestScenario.length > 0">
+            <div class="jug">
+                <span class="label">{{this.formGroup.controls['jugX'].value + ' gallons'}}</span>
+                <div [style]="'background-color: aqua; height: '+ (((100*jugXValue)/this.formGroup.controls['jugX'].value) * 170)/100 + 'px;'">
+                </div>
+            </div>
+            <span><strong>{{jugXValue}}</strong></span>
+        </div>
+    
+        <div class="jug-section"  *ngIf="bestScenario.length > 0">
+            <div class="jug">
+                <span class="label">{{this.formGroup.controls['jugY'].value + ' gallons'}}</span>
+                <div [style]="'background-color: aqua; height: '+ (((100*jugYValue)/this.formGroup.controls['jugY'].value) * 170)/100 + 'px;'">
+                </div>
+            </div>
+            <span><strong>{{jugYValue}}</strong></span>
+        </div>
+    </div>
+
+    <div class="tables-section">
+        <span><strong>{{this.solution}}</strong></span>
+        <div *ngIf="bestScenario.length > 0">
+            <span><strong>Best Solution</strong></span>
+            <table>
+                <tr>
+                  <th>Jug X</th>
+                  <th>Jug Y</th>
+                  <th>Explanation</th>
+                </tr>
+                <tr *ngFor="let scenario of bestScenario">
+                  <td>{{scenario.jugX}}</td>
+                  <td>{{scenario.jugY}}</td>
+                  <td>{{scenario.action}}</td>
+                </tr>
+              </table>
+        </div>
+
+        <div *ngIf="bestScenario.length > 0">
+            <span><strong>Worst Solution</strong></span>
+            <table *ngIf="isFinish">
+                <tr>
+                  <th>Jug X</th>
+                  <th>Jug Y</th>
+                  <th>Explanation</th>
+                </tr>
+                <tr *ngFor="let scenario of worstScenario">
+                  <td>{{scenario.jugX}}</td>
+                  <td>{{scenario.jugY}}</td>
+                  <td>{{scenario.action}}</td>
+                </tr>
+              </table>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,57 @@
+.input-section{
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+}
+.button-section{
+    display: flex;
+    justify-content: end;
+    padding: 24px;
+}
+
+.jug-animation{
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    .jug-section{
+        display: block;
+        position: relative;
+        text-align: center;
+        .jug{
+            border: 5px solid black;
+            border-radius: 8px;
+            width: 100px;
+            height: 170px;
+            transform:rotateX(180deg);
+            .label{
+                position: absolute;
+                top: 45%;
+                left: 24%;
+                transform: rotateX(180deg);
+            }
+        }
+    }
+}
+
+
+table, td, th {  
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+}
+
+.tables-section{
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 24px;
+}
