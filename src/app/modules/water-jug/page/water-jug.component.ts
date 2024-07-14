@@ -25,15 +25,11 @@ export class WaterJugComponent {
     this.resetForm()
   }
 
-  resetForm(){//inicializa el formulario
+  resetForm(){//initialize the form
     this.formGroup = this.formBuilder.group({
-      jugX: [2, [Validators.required,Validators.min(1)]],
-      jugY:[10, [Validators.required,Validators.min(1)]],
-      jugZ: [4, [Validators.required,Validators.min(1)]]
-    });
-
-    this.formGroup.statusChanges.subscribe(status => {
-      this.isEnabled = (status == "VALID" ? true : false);
+      jugX: [1, [Validators.required,Validators.min(1)]],
+      jugY:[1, [Validators.required,Validators.min(1)]],
+      jugZ: [1, [Validators.required,Validators.min(1)]]
     });
 
   }
@@ -146,13 +142,14 @@ export class WaterJugComponent {
   // Returns count of minimum steps needed to
   // measure d liter
   minSteps(jugX , jugY , jugZ) {
-
+    this.isEnabled = true;
     this.scenarioA = [];
     this.scenarioB = [];
     this.worstScenario = [];
     this.bestScenario = [];
     this.jugXValue = 0;
     this.jugYValue = 0;
+    this.solution = "";
     this.isFinish = false;
 
     // To make sure that jugY is smaller than jugX
@@ -184,6 +181,7 @@ export class WaterJugComponent {
       this.initiateAnimation(this.scenarioB)
       this.worstScenario = this.scenarioA
     }
+    
     return Math.min(case1, case2)
   }
 
@@ -197,6 +195,7 @@ export class WaterJugComponent {
         this.bestScenario.push(scenario[index]);
         this.jugXValue = scenario[index].jugX;
         this.jugYValue = scenario[index].jugY;
+        this.isEnabled = false;
         index++;
       }, 3000);
       
