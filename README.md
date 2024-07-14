@@ -1,27 +1,52 @@
-# JugChanllenge
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+# Water Bucket Challenge
+The challenge involves using two jugs with different capacities (X gallons and Y gallons) to measure exactly Z gallons of water. Your application should have a user interface (UI) that displays the state changes of each jug (Empty, Full, or Partially Full) as it progresses towards the solution.
 
 ## Development server
+Important note: To install via npm/Yarn, you need at least Node.js 14 or higher.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+#### Step 1
+Download the code from the repository using github or git bash with the command
+```bash
+  git clone https://github.com/Raikjars/Design-Chicks-Challenge.git
+```
 
-## Code scaffolding
+#### Step 2
+Install project dependencies with the command
+```bash
+  npm install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Step 3
+To run the project locally you must use the command
+```bash
+  ng serve
+```
 
-## Build
+## Dependencies
+The main libraries used for the development of this project are the following:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Angular Cli**: The application frontend is developed using the Angular 15.1.4 framework.
 
-## Running unit tests
+- **NodeJs**: Version **14.15.4 LTS or higher** is used as the execution environment.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **HTML5, CSS3 and JavaScript (ECMAScript 5)** are used for the development of the web application.
 
-## Running end-to-end tests
+## Algorithmic Approach
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+**Solution 1 (Always pour from X liter jug into Y liter jug)** 
 
-## Further help
+- Fill the X litre jug and empty it into Y liter jug.
+- Whenever the X liter jug becomes empty fill it.
+- Whenever the Y liter jug becomes full empty it.
+- Repeat steps 1,2,3 till either Y liter jug or the X liter jug contains Z litres of water.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**Solution 2 (Always pour from Y liter jug into X liter jug)**
+
+- Fill the Y liter jug and empty it into X liter jug.
+- Whenever the Y liter jug becomes empty fill it.
+- Whenever the X liter jug becomes full empty it.
+- Repeat steps 1, 2 and 3 till either Y liter jug or the X liter jug contains Z liters of water.
+
+**Edge Case (No Solution)**
+
+If the greatest common divisor of X and Y does not divide Z, then the solution is not possible.
