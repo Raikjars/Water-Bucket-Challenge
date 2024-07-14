@@ -7,7 +7,7 @@ Important note: To install via npm/Yarn, you need at least Node.js 14 or higher.
 #### Step 1
 Download the code from the repository using github or git bash with the command
 ```bash
-  git clone https://github.com/Raikjars/Design-Chicks-Challenge.git
+  git clone https://github.com/Raikjars/Water-Bucket-Challenge.git
 ```
 
 #### Step 2
